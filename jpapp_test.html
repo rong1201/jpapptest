@@ -3,24 +3,24 @@
 <head>
     <title>OS判別リダイレクト</title>
     <script>
-        // ユーザーのOSを判別する関数
+        // ユーザーエージェント文字列からOSを判別する関数
         function detectOS() {
-            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            const userAgent = navigator.userAgent.toLowerCase();
             
-            if (/windows phone/i.test(userAgent) || /win/i.test(userAgent)) {
+            if (userAgent.includes('win')) {
                 return "Windows";
             }
             
-            if (/macintosh|mac os x/i.test(userAgent)) {
+            if (userAgent.includes('mac')) {
                 return "MacOS";
             }
             
-            if (/android/i.test(userAgent)) {
-                return "Android";
+            if (userAgent.includes('iphone') || userAgent.includes('ipad') || userAgent.includes('ipod')) {
+                return "iOS";
             }
             
-            if (/iPad|iPhone|iPod/i.test(userAgent)) {
-                return "iOS";
+            if (userAgent.includes('android')) {
+                return "Android";
             }
             
             return "Unknown";
@@ -38,7 +38,7 @@
                     window.location.href = "https://www.apple.com/jp/";
                     break;
                 case "iOS":
-                    window.location.href = "https://www.yahoo.co.jp/";
+                    window.location.href = "https://apps.apple.com/jp/app/%E6%97%A5%E6%9C%AC%E9%83%B5%E4%BE%BF/id487103277";
                     break;
                 case "Android":
                     window.location.href = "https://play.google.com/store/apps/details?id=jp.japanpost.post.postbox.android";
