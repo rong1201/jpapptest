@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OS判別リダイレクト</title>
+    <script>
+        // ユーザーのOSを判別する関数
+        function detectOS() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            
+            if (/windows phone/i.test(userAgent) || /win/i.test(userAgent)) {
+                return "Windows";
+            }
+            
+            if (/macintosh|mac os x/i.test(userAgent)) {
+                return "MacOS";
+            }
+            
+            if (/android/i.test(userAgent)) {
+                return "Android";
+            }
+            
+            if (/iPad|iPhone|iPod/i.test(userAgent)) {
+                return "iOS";
+            }
+            
+            return "Unknown";
+        }
+        
+        // OSに応じてリダイレクトする関数
+        function redirectToOSLink() {
+            const os = detectOS();
+            
+            switch (os) {
+                case "Windows":
+                    window.location.href = "https://www.post.japanpost.jp/apps/";
+                    break;
+                case "MacOS":
+                    window.location.href = "https://www.post.japanpost.jp/apps/";
+                    break;
+                case "iOS":
+                    window.location.href = "https://apps.apple.com/jp/app/%E6%97%A5%E6%9C%AC%E9%83%B5%E4%BE%BF/id487103277";
+                    break;
+                case "Android":
+                    window.location.href = "https://play.google.com/store/apps/details?id=jp.japanpost.post.postbox.android";
+                    break;
+                default:
+                    // 未知のOSの場合、デフォルトのリンク先に遷移する
+                    window.location.href = "https://www.post.japanpost.jp/index.html";
+            }
+        }
+    </script>
+</head>
+<body onload="redirectToOSLink()">
+    <!-- ページのコンテンツはここに記述 -->
+</body>
+</html>
